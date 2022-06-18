@@ -8,3 +8,13 @@ before_install:
 
 script:
   - docker run -e CI=true mechaximo/docker-project npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'docker-project'
+  env: 'Dockerproject-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-836492324795'
+  bucket_path: 'docker-project'
+  on:
+    branch: master
